@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <button type="button" class="btn btn-primary" (click)="openModal(template)">Add Experince&nbsp;&nbsp;
+      <i class="glyphicon glyphicon-plus"></i>
+    </button>
+  </div>
+</div>
+
+
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Employee Details</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="recipient-name" class="col-form-label">Designation</label>
+      <input type="text" [(ngModel)]="empdata.designation" class="form-control" id="recipient-name" name="designation" #designation="ngModel">
+    </div>
+    <div class="form-group">
+      <label for="message-text" class="col-form-label">Description</label>
+      <textarea [(ngModel)]="empdata.description" class="form-control" id="message-text" name="description" #description="ngModel"></textarea>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="Save()">Save</button>
+    <button type="button" class="btn btn-default" (click)="Cancel()">Cancel</button>
+  </div>
+</ng-template>
+<div class="container emp-detail">
+  <div class="row">
+    <p *ngFor="let title of myarr">
+      {{title}}
+      <button type="button" class="btn btn-primary sucess">
+        <i class="glyphicon glyphicon-pencil"></i>EDIT</button>
+      <button type="button" class="btn btn-danger remove">
+        <i class="glyphicon glyphicon-remove"></i>Remove</button>
+
+    </p>
+  </div>
+</div>

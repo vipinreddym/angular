@@ -1,40 +1,22 @@
-<table class="table table-striped table-bordered">
-  <thead>
-      <tr>
-          <th>Type</th>
-          <th>Name</th>
-          <th>Batters</th>
-          <th>Toppings</th>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-      </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor="let tables of json">
-          <td>
-
-              {{tables.type}}
-          </td>
-          <td>{{tables.name}}</td>
-
-          <td>
-              <ul>
-                   <li *ngFor=" let x of tables.batters.batter"  [ngClass]="{'Regular':x.type === 'Regular', 'Chocolate':x.type === 'Chocolate','Blueberry':x.type === 'Blueberry', 'changeColor-red':x.type === 'Devil\'s Food'}"> 
-              <!-- <li *ngFor=" let x of tables.batters.batter" [ngClass]="applyColor(x.type)" > -->
-                     
-                      {{ x.type }}  
-                            
-                  </li>
-              </ul>
-          </td>
-          <td>
-              <ul>
-                  <li *ngFor ="let x of tables.topping">
-                      {{ x.type}}
-
-                  </li>
-              </ul>
-          </td>
-      </tr>
-
-  </tbody>
-</table> 
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+          <li class="active"><a routerLink="/registration">Registration</a></li>
+          <li><a routerLink="/login">Login</a></li>
+          <li><a routerLink="/profile">profile</a></li>
+          <li><a routerLink="/data">Data</a></li>
+          <li><a routerLink="/movies">movies</a></li>
+          <li><a routerLink="/signup">signup</a></li>
+          <li><a routerLink="/empdetails">empdetails</a></li>
+          <li><a routerLink="/validations">validations</a></li>
+          <li><a routerLink="/currency">currency</a></li>
+      </ul>
+    </div>
+  </nav>
+<div>
+ <router-outlet></router-outlet>
+</div>

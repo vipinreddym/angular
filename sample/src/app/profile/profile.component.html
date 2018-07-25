@@ -1,0 +1,60 @@
+<h1 class="text-center">user profile</h1>
+
+<div *ngIf =!showform>
+<div>
+<label>fullname</label>
+<input [(ngModel)]="profileData.name"  minlength="5"  placeholder="Full name" type="text">
+</div>
+<div>
+  <label>qualification</label>
+<input [(ngModel)]="profileData.qualification"  placeholder="qualification" type="text">
+</div>
+<div>
+<label>date of birth</label>
+<input [(ngModel)]="profileData.dateofbirth"  placeholder="D.O.B" type="date">
+</div>
+<div>
+  <label> Age </label>
+<input [(ngModel)]="profileData.age"   placeholder="Age" type="text">
+</div>
+<div>
+  <label>high degree</label>
+<input [(ngModel)]="profileData.degree"   placeholder="highest degree" type="text">
+</div>
+<button  (click)="details()" class="btn btn-lg btn-primary btn-signin" type="submit">user details</button>
+</div>
+
+
+<div *ngIf=showform>
+<h1>user details</h1>
+<div>
+<label>full name: </label>
+<span>
+{{profileData.name}}
+</span>
+<div>
+  <label>qualification:</label>
+  <span>
+    {{profileData.qualification}}
+  </span>
+</div>
+<div>
+  <label>date of biirth:</label>
+  <span>
+    {{profileData.dateofbirth}}
+  </span>
+</div>
+<div>
+  <label>age</label>
+  <span>
+    {{profileData.age}}
+  </span>
+</div>
+<div>
+  <label>high degree:</label>
+  <span>
+    {{profileData.degree}}
+  </span>
+</div>
+</div>
+</div>

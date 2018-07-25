@@ -1,0 +1,132 @@
+<section class="background1">
+  <div class="container ">
+    <div class="background2">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="col-sm-6 color">
+            <h1>
+              <b>Facility Registration</b>
+            </h1>
+          </div>
+          <div class="col-sm-offset-2 col-sm-3">
+            <img src="./assets/Logoblack.png" style="width:300px">
+          </div>
+          </div>
+        </div>
+          <div class="clearfix"></div>
+          <form #regForm='ngForm'>
+            <div class="form-group col-sm-12">
+              <label for="name" class="color">*Facility Name (Hospital, Clinic, Nursing Home, Hospice) </label>
+              <input [(ngModel)]="data.Fname" type="text" class="form-control" id="name" name = "Fname" #Fname="ngModel">
+              <div [hidden]="(Fname.dirty || Fname.untouched || Fname.invalid) " class="alert alert-info">Facility Name is required
+              </div>
+            
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group col-sm-12">
+              <label for="address" class="color"> Address </label>
+              <input [(ngModel)]="data.address" type="text" class="form-control" id="address" name = "address" #address = "ngModel" placeholder="Address">
+              <div [hidden]="(address.dirty || address.untouched || address.invalid)" class="alert alert-info">Address is required
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12">
+              <div class="form-group col-sm-4 padding">
+                <label for="city" class="color"> City/Town: </label>
+                <input [(ngModel)]="data.city" type="text" class="form-control" id="city" name= "city" #city="ngModel" placeholder="City/Town">
+                <div [hidden]="(city.dirty || city.untouched || city.invalid)" class="alert alert-info">city is required
+                </div>
+              </div>
+              <div class="form-group col-sm-4">
+                <label for="city" class="color"> State </label>
+                <input [(ngModel)]="data.state" type="text" class="form-control" id="state" name = "state" #state="ngModel" placeholder="State">
+                <div [hidden]="(state.dirty || state.untouched || state.invalid)" class="alert alert-info">state is required
+                </div>
+              </div>
+              <div class="form-group col-sm-4 size">
+                <label for="Zip" class="color"> Zip </label>
+                <input [(ngModel)]="data.zipcode" type="text" class="form-control" id="Zip" name = "zipcode" #zipcode="ngModel" placeholder="Zipcode">
+                <div [hidden]="(zipcode.dirty || zipcode.untouched || zipcode.invalid) " class="alert alert-info">zipcode is required
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="col-sm-12">
+              <div>
+                <label for="contact" class="color"> *Contact </label>
+              </div>
+              <div class="form-group col-sm-6 padding">
+                <input [(ngModel)]="data.Firstname" type="text" class="form-control" id="fName" name="Firstname" #Firstname="ngModel" placeholder="First Name">
+                <div [hidden]="(Firstname.dirty || Firstname.untouched || Firstname.invalid) " class="alert alert-info">Firstname is required
+                </div>
+              </div>
+              <div class="form-group col-sm-6 size">
+                <input [(ngModel)]="data.Lastname" type="text" class="form-control" id="lName" name="Lastname" #Lastname="ngModel" placeholder="last Name">
+                <div [hidden]="(Lastname.dirty || Lastname.untouched || Lastname.invalid) " class="alert alert-info">Lastname is required
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="form-group col-sm-12">
+              <label for="title" class="color"> Title </label>
+              <select class="form-control" value="CEO">
+                <option>CEO</option>
+                <option>CFO</option>
+                <option>Physician</option>
+                <option>Administrator</option>
+                <option>Office Manager</option>
+                <option>Radiology</option>
+                <option>Supervisor</option>
+              </select>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12">
+              <div class="form-group col-sm-6 padding">
+                <label for="mail" class="color"> *E-mail </label>
+                <input [(ngModel)]="data.email" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="email" #email="ngModel" class="form-control" id="mail" placeholder="name@company.com">
+                <div [hidden]="email.dirty ||email.untouched" class="alert alert-info">please fill this field</div>
+                <div [hidden]="email.valid" class="alert alert-info">Please enter a valid email </div>
+              </div>
+              <div class="form-group col-sm-6 size">
+                <label for="number" class="color"> Telephone Number </label>
+                <input type="text" class="form-control" id="number" placeholder="+1 (123) 456-7890">
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="col-sm-12" ngModelGroup="password" #userPassword="ngModelGroup" minlength="8" required>
+              <div class="form-group col-sm-6 padding">
+                <label for="password" class="color"> Password</label>
+                <input [(ngModel)]="data.password" type="password" class="form-control" name = "pword" minlength="8" required id="password">
+              </div>
+              <div class="form-group col-sm-6 size">
+                <label for="confirm" class="color"> Confirm Password </label>
+                <input [(ngModel)]="data.conpassword" type="password" name="conpwd" class="form-control" id="confirm">
+              </div>
+              <div *ngIf="(userPassword.invalid|| userPassword.value?.pword != userPassword.value?.conpwd) && (userPassword.touched)" class="alert alert-info">
+                <div *ngIf="userPassword.invalid; else nomatch">
+                  Password must be more than 8 characters
+                </div>
+                <ng-template #nomatch>
+                  Passwords don't match
+                </ng-template>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="col-sm-12">
+              <button type="button" class="btn btn-primary btn-lg btn-block" [disabled]="!regForm.form.valid">Sign Up</button>
+            </div>
+            <div class="clearfix"></div>
+            <div class="para col-xs-3">
+              <p>Signup Problems?<br>
+             please Call 7/24_______</p>
+            </div>
+            <div class="clearfix"></div>
+            <div class="text-right">
+              <button type="button" class="btn btn-primary addlocation" [disabled]="!regForm.form.valid" (click)="registerUser()">Add Locations --></button>
+            </div>
+          </form>
+          <div class="clearfix"></div>
+      
+    </div>
+  </div>
+</section>

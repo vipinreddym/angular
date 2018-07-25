@@ -1,0 +1,120 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<div class="top-container">
+	<div class="container">
+		<br>
+		<h1 class="text-center">Registration</h1>
+		<br>
+		<div class="card bg-light">
+			<article class="card-body mx-auto" style="max-width: 400px;">
+				<h4 class="card-title mt-3 text-center">Create Account</h4>
+				<p class="text-center">Get started with your free account</p>
+				<p class="divider-text">
+					<span class="bg-light">OR</span>
+				</p>
+				<form #regForm='ngForm'>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text">
+								<i class="fa fa-user"></i>
+							</span>
+						</div>
+						<input [(ngModel)]="registerData.name" name="name" minlength="5" class="form-control" placeholder="Full name" type="text"
+						 #name="ngModel">
+					</div>
+					<div [hidden]="(name.dirty || name.untouched || name.invalid) " class="alert alert-info">Name is required
+					</div>
+
+
+					<!-- form-group// -->
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text">
+								<i class="fa fa-envelope"></i>
+							</span>
+						</div>
+						<input [(ngModel)]="registerData.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" #email="ngModel" name="email" class="form-control"
+						 placeholder="Email address" type="email">
+					</div>
+					<div [hidden]="email.dirty ||email.untouched" class="alert alert-info">please fill this field</div>
+					<div [hidden]="email.valid" class="alert alert-info">Please enter a valid email </div>
+
+
+					<!-- form-group// -->
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text">
+								<i class="fa fa-phone"></i>
+							</span>
+						</div>
+						<select class="custom-select" style="max-width: 120px;">
+							<option selected="">+91(IND)</option>
+						</select>
+
+						<input name="number" class="form-control" placeholder="Phone number" type="text">
+					</div>
+					<!-- form-group// -->
+					<!-- form-group end.// -->
+					<div ngModelGroup="password" #userPassword="ngModelGroup" minlength="8" required>
+
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text">
+									<i class="fa fa-lock"></i>
+								</span>
+							</div>
+							<input class="form-control" [(ngModel)]="registerData.password" name="pword" placeholder="password" type="password" minlength="8"
+							 required>
+						</div>
+						<!-- form-group// -->
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text">
+									<i class="fa fa-lock"></i>
+								</span>
+							</div>
+							<input class="form-control" [(ngModel)]="registerData.conpassword" name="conpwd" placeholder="confirm password" type="password">
+						</div>
+						<div *ngIf="(userPassword.invalid|| userPassword.value?.pword != userPassword.value?.conpwd) && (userPassword.touched)" class="alert alert-info">
+							<div *ngIf="userPassword.invalid; else nomatch">
+								Password must be more than 8 characters
+							</div>
+							<ng-template #nomatch>
+								Passwords don't match
+							</ng-template>
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<button (click)="signUp()" [disabled]="!regForm.form.valid" type="submit" class="btn btn-primary btn-block"> Create Account </button>
+					</div>
+					<!-- form-group// -->
+					<p class="text-center">Have an account?
+						<a routerLink="/login">Log In</a>
+					</p>
+					<button class="btn btn-block btn-facebook">
+						<i class="fab fa-facebook-f"></i>   Login with facebook</button>
+					<button class="btn btn-block btn-google">
+						<i class="fab fa-google-plus-g"></i>  Login with Google</button>
+				</form>
+			</article>
+
+		</div>
+		<!-- card.// -->
+		
+	</div>
+	
+	<!--container end.//-->
+	
